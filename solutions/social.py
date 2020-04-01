@@ -50,7 +50,8 @@ if __name__ == "__main__":
     # QUESTION A
     #
     # "Print" the screen name of the user who authored the first tweet (i.e. "sandwhoa"):
-
+    print(tweets[0]["user"]["screen_name"])
+    
 
     #
     # QUESTION B
@@ -59,6 +60,9 @@ if __name__ == "__main__":
     # ... "print" the screen name of the user who authored that tweet,
     # ... each on a separate line (i.e. "person2", then "person3"):
 
+    for x in tweets: 
+        if "@sandwhoa" in x["full_text"]:
+            print(x["user"]["screen_name"])
 
     #
     # QUESTION C
@@ -68,3 +72,16 @@ if __name__ == "__main__":
     # ... and then "print" the screen name of the user who authored that tweet (i.e. "person3").
     # ... FYI: Assume the tweet order can change at any time
     # ... and has no relationship with the number of likes.
+likes = []
+for x in tweets: 
+        if "@sandwhoa" in x["full_text"]:
+            likes.append(x["likes_count"])
+            
+print(likes)
+most_likes = max(likes)
+print(most_likes)
+for x in tweets:
+    if most_likes == x["likes_count"]:
+        print(x["user"]["screen_name"])
+
+
